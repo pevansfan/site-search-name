@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evaluation Vue.js#2 | Exercice 2</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+    <!-- Fichier CSS pour un style personnalisé-->
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+    <main id="app">
+        <!-- Exemple de rendu déclaratif pour vérifier que la liaison fonctionne bien -->
+        <div class="container-search">
+            <h1>Name To Age</h1>
+            <p style="font-weight: 200;"><i>Découvrez l'âge de votre prénom et combien de personnes en France le portent !</i></p>
+           
+            <!-- Un champ de saisie pour le prénom -->
+            <input id="myInput" type="text" v-model="fnameQuery" @keyup.enter="getAgifyInfos" placeholder="Saisissez un nom ou prénom...">
+            <!-- Un bouton pour déclencher la recherche (marche aussi lorsqu'on appuie sur "Entrée" grâce à une méthode vue.js) -->
+            <span @click="getAgifyInfos" style="cursor: pointer;">
+                <ion-icon name="search-outline"></ion-icon></span>
+            <!-- Affichage des résultats -->
+            <div v-if="age !== null" class="reponse" style="margin-top: 20px;">
+                <p>Votre âge est estimé à <b>{{ age }}</b> ans.</p>
+                <p><b>{{ count }}</b> personnes portent votre prénom en France.</p>
+            </div> 
+            <!-- Affichage des erreurs -->
+            <div v-if="error" class="group-error">
+                <p><ion-icon name="warning-outline"></ion-icon> {{ error }}</p>
+            </div>
+            <!--Rajout d'un lien hypertexte si l'utilisateur veut découvrir tous les prénoms français-->
+            <div class="link">
+                <span>Découvrez la liste de tous les prénoms français en cliquant <a href="https://fr.wikipedia.org/wiki/Liste_de_prénoms_en_français" target="_blank">ici</a></span>
+            </div>
+            
+            
+        </div>
+
+    </main>
+    <!-- Axios -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <!-- Vue.js -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.14/dist/vue.js"></script>
+    <!-- Icônes (pour le bonton Rechercher et les erreurs) -->
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <!-- Mon script -->
+    <script src="assets/js/scripts-exo2.js"></script>
+</body>
+
+</html>
